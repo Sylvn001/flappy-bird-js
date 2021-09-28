@@ -165,7 +165,7 @@ function FlappyBird(){
       bird.animation()
 
       if(colision(bird, barriers)){
-        //clearInterval(timer)
+        clearInterval(timer)
       }
     }, 20)
   }
