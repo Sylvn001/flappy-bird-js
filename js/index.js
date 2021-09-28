@@ -46,12 +46,15 @@ function Barriers (height, opening, x){
 }
 
 function BarrierFactory(height, width, opening, distance, notificationPoint){
+
   this.pairs = [
     new Barriers(height, opening, width),
     new Barriers(height, opening, width + distance),
-    new Barriers(height, opening, width + distance * 2),
-    new Barriers(height, opening, width + distance * 3),
   ]
+
+  for(let i = 2; i< 100; i++){
+    this.pairs.push(new Barriers(height, opening, width + distance * i))
+  }
 
   const offset = 3
 
@@ -156,14 +159,14 @@ function FlappyBird(){
 
 
   this.start = () => {
+
     const timer = setInterval(() => {
       barriers.animation()
       bird.animation()
 
       if(colision(bird, barriers)){
-        clearInterval(timer)
+        //clearInterval(timer)
       }
-
     }, 20)
   }
 
